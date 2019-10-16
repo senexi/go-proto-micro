@@ -1,0 +1,105 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "partners.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/partners": {
+      "get": {
+        "operationId": "GetPartners",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/partnersPartnerList"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search_string",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PartnerService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PartnerPhoneNumber": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/PartnerPhoneType"
+        }
+      }
+    },
+    "PartnerPhoneType": {
+      "type": "string",
+      "enum": [
+        "MOBILE",
+        "HOME",
+        "WORK"
+      ],
+      "default": "MOBILE"
+    },
+    "partnersAddPartnerReply": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "partnersPartner": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartnerPhoneNumber"
+          }
+        }
+      }
+    },
+    "partnersPartnerList": {
+      "type": "object",
+      "properties": {
+        "partners": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/partnersPartner"
+          }
+        }
+      }
+    }
+  }
+}

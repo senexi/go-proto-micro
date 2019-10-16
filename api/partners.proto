@@ -1,0 +1,53 @@
+//go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/protobuf partners.proto --gogoslick_out=plugins=grpc:../partners
+syntax = "proto3";
+
+package partners;
+
+option java_package = "my.company";
+option java_outer_classname = "PartnerProtos";
+option java_multiple_files = true;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+
+message Partner {
+  string name = 1 [(gogoproto.jsontag) = "name", (gogoproto.moretags) = "pg:\",notnull\""];
+  int32 id = 2;
+  string email = 3;
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+
+  message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phone = 4;
+}
+
+message PartnerList {
+  repeated Partner partners = 1;
+}
+
+message AddPartnerReply {
+  string message = 1;
+}
+
+message SearchRequest {
+  string search_string = 1;
+}
+
+service PartnerService {
+    rpc AddPartner (Partner) returns (AddPartnerReply) {};
+    rpc GetPartners (SearchRequest) returns (PartnerList) {
+        option (google.api.http) = {
+            get: "/partners"
+        };
+    };
+    rpc SearchPartner (SearchRequest) returns (PartnerList) {};
+}
+

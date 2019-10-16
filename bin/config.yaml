@@ -1,0 +1,12 @@
+database:
+    name: postgres
+    url: postgres.postgres
+    port: 5432
+    user: postgres
+    password: letmein
+server:
+    port: 50051
+    gateway:
+        port: 8081
+    web:
+        port: 8080
