@@ -13,17 +13,15 @@ GREEN=\033[0;32m
 check-requirements:
 	scripts/checkRequirements.sh
 
-generate-proto:
+generate:
 	scripts/processProtobufs.sh
-
-generate-statics:
 	statik -f -src=./web -dest=./generated
 
 format:
 	@echo "\n$(GREEN)### formatting code\e[0m"
 	$(GO_CMD) fmt ./...
 
-build: generate-proto generate-statics
+build: generate
 	@echo "\n$(GREEN)### compile $(APP_NAME)\e[0m"
 	env GOOS=linux GOARCH=amd64 $(GO_CMD) build $(LDFLAGS) -o bin/$(APP_NAME)
 

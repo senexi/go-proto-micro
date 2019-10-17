@@ -52,8 +52,9 @@ spec:
       args: ["
         cd /go/src/github.com/senexi/go-proto-micro &&
         git status &&
-        cat Makefile &&
-        make list
+        make generate &&
+        go get &&
+        make build
       "]
       volumeMounts:
       - name: workdir
