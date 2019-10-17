@@ -47,13 +47,13 @@ spec:
           repo: https://github.com/senexi/go-proto-micro
           revision: "{{inputs.parameters.revision}}"
     container:
-      image: golang:1.8
+      image: senexi/gobuilder:latest
       command: [sh, -c]
       args: ["
         cd /go/src/github.com/senexi/go-proto-micro &&
         git status &&
-        go get
-        go build -v .
+        go get &&
+        make build
       "]
       volumeMounts:
       - name: workdir
