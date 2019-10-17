@@ -18,6 +18,7 @@ spec:
       name: workdir
     spec:
       accessModes: [ "ReadWriteOnce" ]
+      storageClassName: local-path
       resources:
         requests:
           storage: 1Gi
@@ -41,16 +42,17 @@ spec:
       - name: revision
       artifacts:
       - name: code
-        path: /go/src/github.com/senexi
+        path: /go/src/github.com/senexi/go-proto-micro
         git:
-          repo: https://github.com/golang/example.git
+          repo: https://github.com/senexi/go-proto-micro
           revision: "{{inputs.parameters.revision}}"
     container:
       image: golang:1.8
       command: [sh, -c]
       args: ["
-        cd /go/src/github.com/golang/example/hello &&
+        cd /go/src/github.com/senexi/go-proto-micro &&
         git status &&
+        go get -u ./...
         go build -v .
       "]
       volumeMounts:

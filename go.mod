@@ -1,4 +1,4 @@
-module github.com/senexi/camp-partners
+module github.com/senexi/go-proto-micro
 
 go 1.13
 
