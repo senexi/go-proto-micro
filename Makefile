@@ -13,6 +13,9 @@ GREEN=\033[0;32m
 check-requirements:
 	scripts/checkRequirements.sh
 
+install-requirements:
+	scripts/installRequirements.sh
+
 generate:
 	scripts/processProtobufs.sh
 	statik -f -src=./web -dest=./generated
