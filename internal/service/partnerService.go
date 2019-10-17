@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	pb "github.com/senexi/camp-partners/generated/partners"
+	pb "github.com/senexi/go-proto-micro/generated/partners"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 )

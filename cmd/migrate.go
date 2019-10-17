@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-pg/migrations/v7"
 	"github.com/go-pg/pg/v9"
-	sm "github.com/senexi/camp-partners/migrations"
+	sm "github.com/senexi/go-proto-micro/migrations"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

@@ -1,6 +1,6 @@
 package server
 import(
-    "github.com/senexi/camp-partners/internal/db"
+    "github.com/senexi/go-proto-micro/internal/db"
 )
 type HealthStatus struct {
 	Status  bool `json:"status"`

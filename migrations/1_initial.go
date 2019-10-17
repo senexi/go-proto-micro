@@ -4,7 +4,7 @@ import (
 	"github.com/go-pg/migrations/v7"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
-	pb "github.com/senexi/camp-partners/generated/partners"
+	pb "github.com/senexi/go-proto-micro/generated/partners"
 	log "github.com/sirupsen/logrus"
 )
 

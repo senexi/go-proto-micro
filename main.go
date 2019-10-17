@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/senexi/camp-partners/cmd"
+	"github.com/senexi/go-proto-micro/cmd"
 	log "github.com/sirupsen/logrus"
 )
 

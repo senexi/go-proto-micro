@@ -10,11 +10,11 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/rakyll/statik/fs"
-	pb "github.com/senexi/camp-partners/generated/partners"
-	_ "github.com/senexi/camp-partners/generated/statik"
-	"github.com/senexi/camp-partners/internal/db"
-	s "github.com/senexi/camp-partners/internal/server"
-	ps "github.com/senexi/camp-partners/internal/service"
+	pb "github.com/senexi/go-proto-micro/generated/partners"
+	_ "github.com/senexi/go-proto-micro/generated/statik"
+	"github.com/senexi/go-proto-micro/internal/db"
+	s "github.com/senexi/go-proto-micro/internal/server"
+	ps "github.com/senexi/go-proto-micro/internal/service"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 
