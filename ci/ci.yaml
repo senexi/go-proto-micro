@@ -52,7 +52,7 @@ spec:
       args: ["
         cd /go/src/github.com/senexi/go-proto-micro &&
         git status &&
-        go get -u ./...
+        go get
         go build -v .
       "]
       volumeMounts:
