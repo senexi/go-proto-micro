@@ -3,7 +3,7 @@
 This is a reference setup for microservices written in `go`.
 
 ## befor you start
-Before you start, make sure you have a working go environment, the `make` command and Google's
+Before you start, make sure you have a working `go` environment, the `make` command and Google's
 `protoc` compiler installed.
 
 ### go
@@ -25,8 +25,8 @@ git clone https://github.com/senexi/go-proto-micro.git
 cd go-proto-micro
 chmod +x scripts/*
 make install-requirements
-make generate &&
-go get &&
+make generate
+go get
 make run
 ```
 
