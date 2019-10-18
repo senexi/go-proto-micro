@@ -10,7 +10,6 @@ require (
 	github.com/gogo/protobuf v1.3.0
 	github.com/golang/protobuf v1.3.2
 	github.com/grpc-ecosystem/grpc-gateway v1.11.3
-	github.com/mitchellh/go-homedir v1.1.0
 	github.com/prometheus/client_golang v1.1.0
 	github.com/rakyll/statik v0.1.6
 	github.com/sirupsen/logrus v1.4.2

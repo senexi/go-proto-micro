@@ -26,8 +26,6 @@ for i in *.proto; do
     cp $OUT/*.swagger.json ../web/swagger-ui/swaggers
 done
 
-
-
 cd ../web/swagger-ui
 urls="\t\turls: [{"
 for f in swaggers/*.swagger.json; do
