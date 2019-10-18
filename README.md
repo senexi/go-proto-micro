@@ -2,6 +2,23 @@
 
 This is a reference setup for microservices written in `go`.
 
+## befor you start
+
+Before you start, make sure you have a correctly setup go environment and Google's
+protoc compile installed. You can use the script `scripts/checkRequirements.sh`
+to check if any requirement is missing.
+
+### go
+You need a working `go` development environment with the environment variables
+ `$GOPATH` and `$GOBIN` set up.
+See the official [Getting started](https://golang.org/doc/install) and
+[How to write go code](https://golang.org/doc/code.html#Workspaces)
+for details
+
+### protoc
+Install the `protoc` compiler binary from [here](https://github.com/protocolbuffers/protobuf/releases).
+On Ubuntu you can also just do `sudo apt install protobuf-compiler`.
+
 ## quick start
 
 ```
@@ -14,15 +31,7 @@ go get &&
 make run
 ```
 
-## requirements
-
-Run `scripts/checkRequirements.sh` to check if any requirement is missing.
-
-### go
-You need a working `go` development environment with `GOPATH` and `GOBIN` setup.
-See the official [Getting started](https://golang.org/doc/install) and
-[How to write go code](https://golang.org/doc/code.html#Workspaces)
-for details
+## in detail
 
 ### binaries for code generation
 Once `go` is installed, you can use `make install-requirements`
@@ -35,9 +44,6 @@ You need `make` to run the various goals in the `Makefile`.
 Run `make list` to see all targets.
 
 ## protobuf support
-
-Install the `protoc` compiler binary from [here](https://github.com/protocolbuffers/protobuf/releases).
-On Ubuntu you can also just do `sudo apt install protobuf-compiler`.
 
 All required protobuf tools must be installed. We are using `gogo/protobuf` extension `gogoproto.moretags`
 to add additional ORM tags to the generated models.

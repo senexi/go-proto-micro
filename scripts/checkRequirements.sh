@@ -17,6 +17,7 @@ done
 e "checking for required commands"
 REQ=(
     go
+    make
     protoc
     protoc-gen-gogoslick
     protoc-gen-go
