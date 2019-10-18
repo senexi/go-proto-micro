@@ -6,6 +6,7 @@
 !*.*
 !Makefile
 !LICENSE
+!Dockerfile
 
 # Unignore all dirs
 !*/

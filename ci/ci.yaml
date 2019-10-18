@@ -45,5 +45,18 @@ spec:
         chmod +x scripts/* &&
         make generate &&
         go get &&
-        make build
-      "]
+        make build &&
+        mv bin/go-proto-micro /tmp &&
+
+        "]
+      volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+    volumes:
+      - name: tmp
+        persistentVolumeClaim:
+          claimName: argo-pv-claim
+    outputs:
+      artifacts:
+      - name: binary
+        path: /tmp/go-proto-micro
