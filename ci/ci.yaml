@@ -47,15 +47,20 @@ spec:
         go get &&
         make build &&
         mv bin/go-proto-micro /tmp &&
-
+        docker build -t senexi/go-proto-micro:latest .
         "]
       volumeMounts:
         - name: tmp
           mountPath: /tmp
+        - name: dockersock
+          mountPath: "/var/run/docker.sock"
     volumes:
       - name: tmp
         persistentVolumeClaim:
           claimName: argo-pv-claim
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
     outputs:
       artifacts:
       - name: binary
