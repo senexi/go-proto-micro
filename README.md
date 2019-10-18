@@ -3,10 +3,8 @@
 This is a reference setup for microservices written in `go`.
 
 ## befor you start
-
-Before you start, make sure you have a correctly setup go environment and Google's
-protoc compile installed. You can use the script `scripts/checkRequirements.sh`
-to check if any requirement is missing.
+Before you start, make sure you have a working go environment, the `make` command and Google's
+`protoc` compiler installed.
 
 ### go
 You need a working `go` development environment with the environment variables
@@ -19,6 +17,7 @@ for details
 Install the `protoc` compiler binary from [here](https://github.com/protocolbuffers/protobuf/releases).
 On Ubuntu you can also just do `sudo apt install protobuf-compiler`.
 
+
 ## quick start
 
 ```
@@ -30,6 +29,10 @@ make generate &&
 go get &&
 make run
 ```
+
+If something goes wrong, run  `make check-requirements`
+to see if any of the required dependencies are missing.
+
 
 ## in detail
 
