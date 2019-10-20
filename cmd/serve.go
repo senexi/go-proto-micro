@@ -12,9 +12,9 @@ import (
 	"github.com/rakyll/statik/fs"
 	pb "github.com/senexi/go-proto-micro/generated/partners"
 	_ "github.com/senexi/go-proto-micro/generated/statik"
-	"github.com/senexi/go-proto-micro/internal/db"
-	s "github.com/senexi/go-proto-micro/internal/server"
-	ps "github.com/senexi/go-proto-micro/internal/service"
+	"github.com/senexi/go-proto-micro/internal/provider/db"
+	s "github.com/senexi/go-proto-micro/internal/provider/management"
+	ps "github.com/senexi/go-proto-micro/internal/provider/service"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 

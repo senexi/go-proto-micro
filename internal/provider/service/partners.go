@@ -1,26 +1,22 @@
 package service
 
 import (
-	"context"
-
+    "context"
+    "github.com/senexi/go-proto-micro/internal/usecases"
 	pb "github.com/senexi/go-proto-micro/generated/partners"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 )
 
+
 // Server implmenting the partner service
 type PartnerService struct {
+    partnerUsecase usecases.PartnerUsecase
 }
 
 func (s *PartnerService) GetPartners(ctx context.Context, in *pb.SearchRequest) (*pb.PartnerList, error) {
 	var partnerList *pb.PartnerList
-	partnerList = new(pb.PartnerList)
-
-	partner := pb.Partner{
-		Name: "Paul",
-	}
-
-	partnerList.Partners = append(partnerList.Partners, &partner)
+	partnerList = s.partnerUsecase.GetPartners()
 	return partnerList, nil
 }
 
