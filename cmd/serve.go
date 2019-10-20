@@ -12,9 +12,9 @@ import (
 	"github.com/rakyll/statik/fs"
 	pb "github.com/senexi/go-proto-micro/generated/partners"
 	_ "github.com/senexi/go-proto-micro/generated/statik"
-	"github.com/senexi/go-proto-micro/internal/provider/db"
-	s "github.com/senexi/go-proto-micro/internal/provider/management"
-	ps "github.com/senexi/go-proto-micro/internal/provider/service"
+	"github.com/senexi/go-proto-micro/internal/providers/db"
+	s "github.com/senexi/go-proto-micro/internal/providers/management"
+	ps "github.com/senexi/go-proto-micro/internal/providers/service"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 
@@ -51,7 +51,7 @@ func runServer() {
 	password := viper.GetString("database.password")
 	databaseURL := viper.GetString("database.url")
 
-	db.InitDB(database, user, password, fmt.Sprintf("%s:%s", databaseURL, databasePort))
+	db.Connect(database, user, password, fmt.Sprintf("%s:%s", databaseURL, databasePort))
 
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	log.WithFields(log.Fields{"port": port}).Info("started grpc server")
@@ -59,8 +59,8 @@ func runServer() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
-	partnerService := ps.PartnerService{}
-	pb.RegisterPartnerServiceServer(s, &partnerService)
+	partnerService := ps.NewPartnerService()
+	pb.RegisterPartnerServiceServer(s, partnerService)
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

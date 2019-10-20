@@ -31,7 +31,3 @@ func init() {
 		return nil
 	})
 }
-
-func Ready() {
-	log.Info("initialize migrations")
-}

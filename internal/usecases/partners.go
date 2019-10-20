@@ -5,7 +5,7 @@ import (
 )
 
 type db interface {
-	getPartners() *partners.PartnerList
+	GetPartners() *partners.PartnerList
 }
 
 type PartnerUsecase struct {
@@ -13,5 +13,5 @@ type PartnerUsecase struct {
 }
 
 func (p *PartnerUsecase) GetPartners() *partners.PartnerList {
-	return p.DB.getPartners()
+	return p.DB.GetPartners()
 }

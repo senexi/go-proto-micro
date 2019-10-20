@@ -1,7 +1,7 @@
 package management
 
 import (
-	"github.com/senexi/go-proto-micro/internal/provider/db"
+	"github.com/senexi/go-proto-micro/internal/providers/db"
 )
 
 type HealthStatus struct {
