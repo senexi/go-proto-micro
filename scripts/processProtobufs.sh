@@ -34,7 +34,7 @@ for f in swaggers/*.swagger.json; do
 done
 urls="${urls::-1}"
 urls+="}]"
-e "updating swagger-ui with $urls"
+echo "updating swagger-ui with $urls"
 
 sed -i "s|\t\turls.*|$urls|g" index.html
 

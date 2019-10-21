@@ -5,13 +5,13 @@ import (
 )
 
 type db interface {
-	GetPartners() *partners.PartnerList
+	GetPartners() (*partners.PartnerList, error)
 }
 
 type PartnerUsecase struct {
 	DB db
 }
 
-func (p *PartnerUsecase) GetPartners() *partners.PartnerList {
+func (p *PartnerUsecase) GetPartners() (*partners.PartnerList, error) {
 	return p.DB.GetPartners()
 }

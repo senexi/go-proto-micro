@@ -9,7 +9,7 @@ var postgresDB *pg.DB
 var isConnected bool
 
 type DB struct {
-
+    db *pg.DB
 }
 
 func Connect(database string, user string, password string, url string) {
@@ -26,7 +26,9 @@ func Connect(database string, user string, password string, url string) {
 }
 
 func NewDatabase() *DB{
-    return &DB{}
+    return &DB{
+        db: postgresDB,
+    }
 }
 
 func Health() bool {

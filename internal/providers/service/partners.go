@@ -27,9 +27,8 @@ func NewPartnerService() *PartnerService{
 }
 
 func (s *PartnerService) GetPartners(ctx context.Context, in *pb.SearchRequest) (*pb.PartnerList, error) {
-	var partnerList *pb.PartnerList
-	partnerList = s.partnerUsecase.GetPartners()
-	return partnerList, nil
+    partnerList, err := s.partnerUsecase.GetPartners()
+	return partnerList, err
 }
 
 func (s *PartnerService) AddPartner(ctx context.Context, req *pb.Partner) (*pb.AddPartnerReply, error) {

@@ -2,16 +2,18 @@ package db
 
 import(
     "github.com/senexi/go-proto-micro/generated/partners"
+    log "github.com/sirupsen/logrus"
 )
 
-func (db *DB) GetPartners() *partners.PartnerList{
-    var partnerList *partners.PartnerList
-    partnerList = new(partners.PartnerList)
+func (db *DB) GetPartners() (*partners.PartnerList, error){
+    var result []*partners.Partner
+    err := db.db.Model(result).Limit(1000).Select()
+    if err != nil {
+        log.Error(err)
+    }
 
-	partner := partners.Partner{
-		Name: "Paul",
-	}
-
-    partnerList.Partners = append(partnerList.Partners, &partner)
-    return partnerList
+    partnerList := &partners.PartnerList{
+        Partners: result,
+    }
+    return partnerList, err
 }
