@@ -100,10 +100,9 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| type | [string](#string) |  |  |
-| title | [string](#string) |  |  |
-| status | [string](#string) |  |  |
-| detail | [string](#string) |  |  |
+| code | [string](#string) |  |  |
+| message | [string](#string) |  |  |
+| details | [string](#string) |  |  |
 
 
 

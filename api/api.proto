@@ -30,19 +30,12 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 			description: "Returned when the user does not have permission to access the resource.";
             schema: {
 				json_schema: {
-					ref: ".proto.Problem";
+					ref: "google.api.status";
 				}
 			}
 		}
     }
 };
-
-message Problem {
-    string type = 1;
-    string title = 2;
-    string status = 3;
-    string detail = 4;
-}
 
 message Partner {
   string name = 1 [(gogoproto.jsontag) = "name", (gogoproto.moretags) = "pg:\",notnull\""];

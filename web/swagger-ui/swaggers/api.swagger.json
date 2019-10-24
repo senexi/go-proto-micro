@@ -37,7 +37,7 @@
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
             "schema": {
-              "$ref": "#/definitions/protoProblem"
+              "$ref": "google.api.status"
             }
           }
         },
@@ -113,23 +113,6 @@
           "items": {
             "$ref": "#/definitions/protoPartner"
           }
-        }
-      }
-    },
-    "protoProblem": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "detail": {
-          "type": "string"
         }
       }
     }
