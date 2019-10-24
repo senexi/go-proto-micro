@@ -3,31 +3,31 @@
 
 ## Table of Contents
 
-- [partners.proto](#partners.proto)
-    - [AddPartnerReply](#partners.AddPartnerReply)
-    - [Partner](#partners.Partner)
-    - [Partner.PhoneNumber](#partners.Partner.PhoneNumber)
-    - [PartnerList](#partners.PartnerList)
-    - [SearchRequest](#partners.SearchRequest)
+- [proto.proto](#proto.proto)
+    - [AddPartnerReply](#proto.AddPartnerReply)
+    - [Partner](#proto.Partner)
+    - [Partner.PhoneNumber](#proto.Partner.PhoneNumber)
+    - [PartnerList](#proto.PartnerList)
+    - [SearchRequest](#proto.SearchRequest)
   
-    - [Partner.PhoneType](#partners.Partner.PhoneType)
+    - [Partner.PhoneType](#proto.Partner.PhoneType)
   
   
-    - [PartnerService](#partners.PartnerService)
+    - [PartnerService](#proto.PartnerService)
   
 
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="partners.proto"></a>
+<a name="proto.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## partners.proto
-go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/protobuf partners.proto --gogoslick_out=plugins=grpc:../partners
+## proto.proto
+go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/protobuf proto.proto --gogoslick_out=plugins=grpc:../partners
 
 
-<a name="partners.AddPartnerReply"></a>
+<a name="proto.AddPartnerReply"></a>
 
 ### AddPartnerReply
 
@@ -42,7 +42,7 @@ go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/p
 
 
 
-<a name="partners.Partner"></a>
+<a name="proto.Partner"></a>
 
 ### Partner
 
@@ -53,14 +53,14 @@ go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/p
 | name | [string](#string) |  |  |
 | id | [int32](#int32) |  |  |
 | email | [string](#string) |  |  |
-| phone | [Partner.PhoneNumber](#partners.Partner.PhoneNumber) | repeated |  |
+| phone | [Partner.PhoneNumber](#proto.Partner.PhoneNumber) | repeated |  |
 
 
 
 
 
 
-<a name="partners.Partner.PhoneNumber"></a>
+<a name="proto.Partner.PhoneNumber"></a>
 
 ### Partner.PhoneNumber
 
@@ -69,14 +69,14 @@ go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/p
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | number | [string](#string) |  |  |
-| type | [Partner.PhoneType](#partners.Partner.PhoneType) |  |  |
+| type | [Partner.PhoneType](#proto.Partner.PhoneType) |  |  |
 
 
 
 
 
 
-<a name="partners.PartnerList"></a>
+<a name="proto.PartnerList"></a>
 
 ### PartnerList
 
@@ -84,14 +84,14 @@ go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/p
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| partners | [Partner](#partners.Partner) | repeated |  |
+| partners | [Partner](#proto.Partner) | repeated |  |
 
 
 
 
 
 
-<a name="partners.SearchRequest"></a>
+<a name="proto.SearchRequest"></a>
 
 ### SearchRequest
 
@@ -108,7 +108,7 @@ go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/p
  
 
 
-<a name="partners.Partner.PhoneType"></a>
+<a name="proto.Partner.PhoneType"></a>
 
 ### Partner.PhoneType
 
@@ -125,16 +125,16 @@ go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/p
  
 
 
-<a name="partners.PartnerService"></a>
+<a name="proto.PartnerService"></a>
 
 ### PartnerService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| AddPartner | [Partner](#partners.Partner) | [AddPartnerReply](#partners.AddPartnerReply) |  |
-| GetPartners | [SearchRequest](#partners.SearchRequest) | [PartnerList](#partners.PartnerList) |  |
-| SearchPartner | [SearchRequest](#partners.SearchRequest) | [PartnerList](#partners.PartnerList) |  |
+| AddPartner | [Partner](#proto.Partner) | [AddPartnerReply](#proto.AddPartnerReply) |  |
+| GetPartners | [SearchRequest](#proto.SearchRequest) | [PartnerList](#proto.PartnerList) |  |
+| SearchPartner | [SearchRequest](#proto.SearchRequest) | [PartnerList](#proto.PartnerList) |  |
 
  
 

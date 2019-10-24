@@ -4,17 +4,17 @@
 ## Table of Contents
 
 - [api.proto](#api.proto)
-    - [AddPartnerReply](#partners.AddPartnerReply)
-    - [Partner](#partners.Partner)
-    - [Partner.PhoneNumber](#partners.Partner.PhoneNumber)
-    - [PartnerList](#partners.PartnerList)
-    - [Problem](#partners.Problem)
-    - [SearchRequest](#partners.SearchRequest)
+    - [AddPartnerReply](#proto.AddPartnerReply)
+    - [Partner](#proto.Partner)
+    - [Partner.PhoneNumber](#proto.Partner.PhoneNumber)
+    - [PartnerList](#proto.PartnerList)
+    - [Problem](#proto.Problem)
+    - [SearchRequest](#proto.SearchRequest)
   
-    - [Partner.PhoneType](#partners.Partner.PhoneType)
+    - [Partner.PhoneType](#proto.Partner.PhoneType)
   
   
-    - [PartnerService](#partners.PartnerService)
+    - [PartnerService](#proto.PartnerService)
   
 
 - [Scalar Value Types](#scalar-value-types)
@@ -28,7 +28,7 @@
 
 
 
-<a name="partners.AddPartnerReply"></a>
+<a name="proto.AddPartnerReply"></a>
 
 ### AddPartnerReply
 
@@ -43,7 +43,7 @@
 
 
 
-<a name="partners.Partner"></a>
+<a name="proto.Partner"></a>
 
 ### Partner
 
@@ -54,14 +54,14 @@
 | name | [string](#string) |  |  |
 | id | [int32](#int32) |  |  |
 | email | [string](#string) |  |  |
-| phone | [Partner.PhoneNumber](#partners.Partner.PhoneNumber) | repeated |  |
+| phone | [Partner.PhoneNumber](#proto.Partner.PhoneNumber) | repeated |  |
 
 
 
 
 
 
-<a name="partners.Partner.PhoneNumber"></a>
+<a name="proto.Partner.PhoneNumber"></a>
 
 ### Partner.PhoneNumber
 
@@ -70,14 +70,14 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | number | [string](#string) |  |  |
-| type | [Partner.PhoneType](#partners.Partner.PhoneType) |  |  |
+| type | [Partner.PhoneType](#proto.Partner.PhoneType) |  |  |
 
 
 
 
 
 
-<a name="partners.PartnerList"></a>
+<a name="proto.PartnerList"></a>
 
 ### PartnerList
 
@@ -85,14 +85,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| partners | [Partner](#partners.Partner) | repeated |  |
+| partners | [Partner](#proto.Partner) | repeated |  |
 
 
 
 
 
 
-<a name="partners.Problem"></a>
+<a name="proto.Problem"></a>
 
 ### Problem
 
@@ -110,7 +110,7 @@
 
 
 
-<a name="partners.SearchRequest"></a>
+<a name="proto.SearchRequest"></a>
 
 ### SearchRequest
 
@@ -127,7 +127,7 @@
  
 
 
-<a name="partners.Partner.PhoneType"></a>
+<a name="proto.Partner.PhoneType"></a>
 
 ### Partner.PhoneType
 
@@ -144,16 +144,16 @@
  
 
 
-<a name="partners.PartnerService"></a>
+<a name="proto.PartnerService"></a>
 
 ### PartnerService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| AddPartner | [Partner](#partners.Partner) | [AddPartnerReply](#partners.AddPartnerReply) |  |
-| GetPartners | [SearchRequest](#partners.SearchRequest) | [PartnerList](#partners.PartnerList) |  |
-| SearchPartner | [SearchRequest](#partners.SearchRequest) | [PartnerList](#partners.PartnerList) |  |
+| AddPartner | [Partner](#proto.Partner) | [AddPartnerReply](#proto.AddPartnerReply) |  |
+| GetPartners | [SearchRequest](#proto.SearchRequest) | [PartnerList](#proto.PartnerList) |  |
+| SearchPartner | [SearchRequest](#proto.SearchRequest) | [PartnerList](#proto.PartnerList) |  |
 
  
 

@@ -10,11 +10,11 @@ import (
 type MockDB struct {
 }
 
-func (db *MockDB) GetPartners() (*partners.PartnerList, error){
-    var partnerList *partners.PartnerList
-    partnerList = new(partners.PartnerList)
+func (db *MockDB) GetPartners() (*proto.PartnerList, error){
+    var partnerList *proto.PartnerList
+    partnerList = new(proto.PartnerList)
 
-	partner := partners.Partner{
+	partner := proto.Partner{
 		Name: "Paul",
 	}
 
@@ -29,16 +29,16 @@ func TestPartnerUsecase_GetPartners(t *testing.T) {
 	tests := []struct {
 		name    string
 		fields  fields
-		want    *partners.PartnerList
+		want    *proto.PartnerList
 		wantErr bool
 	}{
         name: "GetPartners_1",
         fields: {
             DB: MockDB{},
         },
-        want: &partners.PartnerList{
-            Partners: []partners.Partner{
-                partners.
+        want: &proto.PartnerList{
+            Partners: []proto.Partner{
+                proto.
             }
         }
 	}

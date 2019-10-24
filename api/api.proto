@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package partners;
+package proto;
 
 option java_package = "my.company";
 option java_outer_classname = "PartnerProtos";
@@ -30,7 +30,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 			description: "Returned when the user does not have permission to access the resource.";
             schema: {
 				json_schema: {
-					ref: ".partners.Problem";
+					ref: ".proto.Problem";
 				}
 			}
 		}

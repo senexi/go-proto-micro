@@ -31,13 +31,13 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/partnersPartnerList"
+              "$ref": "#/definitions/protoPartnerList"
             }
           },
           "403": {
             "description": "Returned when the user does not have permission to access the resource.",
             "schema": {
-              "$ref": "#/definitions/partnersProblem"
+              "$ref": "#/definitions/protoProblem"
             }
           }
         },
@@ -76,7 +76,7 @@
       ],
       "default": "MOBILE"
     },
-    "partnersAddPartnerReply": {
+    "protoAddPartnerReply": {
       "type": "object",
       "properties": {
         "message": {
@@ -84,7 +84,7 @@
         }
       }
     },
-    "partnersPartner": {
+    "protoPartner": {
       "type": "object",
       "properties": {
         "name": {
@@ -105,18 +105,18 @@
         }
       }
     },
-    "partnersPartnerList": {
+    "protoPartnerList": {
       "type": "object",
       "properties": {
         "partners": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/partnersPartner"
+            "$ref": "#/definitions/protoPartner"
           }
         }
       }
     },
-    "partnersProblem": {
+    "protoProblem": {
       "type": "object",
       "properties": {
         "type": {
