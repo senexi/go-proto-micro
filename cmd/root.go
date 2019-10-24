@@ -11,6 +11,7 @@ import (
 )
 
 var cfgFile string
+var logLevel string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -43,11 +44,19 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./config.yaml)")
+    rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./config.yaml)")
+    rootCmd.PersistentFlags().StringVarP(&logLevel, "verbosity", "v", log.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic")
+
+    rootCmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
+		if err := setLogLevel(logLevel); err != nil {
+			return err
+		}
+		return nil
+    }
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+    // rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -65,7 +74,7 @@ func initConfig() {
 		viper.AddConfigPath(exPath)
 		viper.SetConfigName("config")
 	}
-	viper.SetEnvPrefix("camp")
+	viper.SetEnvPrefix("gmp")
 	viper.AutomaticEnv() // read in environment variables that match
 
 	// If a config file is found, read it in.
@@ -75,4 +84,14 @@ func initConfig() {
 	} else {
 		log.Warn(err)
 	}
+}
+
+//setUpLogs set the log output ans the log level
+func setLogLevel(level string) error {
+	lvl, err := log.ParseLevel(level)
+	if err != nil {
+		return err
+	}
+	log.SetLevel(lvl)
+	return nil
 }

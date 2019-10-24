@@ -30,16 +30,22 @@ var serveCmd = &cobra.Command{
 	Long:  `Run the server`,
 	Run: func(cmd *cobra.Command, args []string) {
 		go runHTTPServer()
-		go runGrpcGateway()
-		runServer()
+        go runGrpcGateway()
+        if (mock) {
+            runMockServer()
+        } else {
+            runServer()
+        }
 	},
 }
 
 var server s.Server
+var mock bool
 
 func init() {
 	// serveCmd.Flags().StringVarP(&port, "port", "p", "50051", "port of the server")
-	// viper.BindPFlag("server.port", serveCmd.LocalFlags().Lookup("port"))
+    // viper.BindPFlag("server.port", serveCmd.LocalFlags().Lookup("port"))
+    serveCmd.Flags().BoolVarP(&mock, "mock", "m", false, "run server in mock mode")
 	rootCmd.AddCommand(serveCmd)
 }
 
@@ -60,6 +66,22 @@ func runServer() {
 	}
 	s := grpc.NewServer()
 	partnerService := ps.NewPartnerService()
+	pb.RegisterPartnerServiceServer(s, partnerService)
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+}
+
+func runMockServer() {
+    port := viper.GetString("server.port")
+
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
+	log.WithFields(log.Fields{"port": port}).Info("started MOCKED grpc server")
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+	s := grpc.NewServer()
+	partnerService := ps.NewMockPartnerService()
 	pb.RegisterPartnerServiceServer(s, partnerService)
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
