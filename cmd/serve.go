@@ -10,7 +10,7 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/rakyll/statik/fs"
-	pb "github.com/senexi/go-proto-micro/generated/partners"
+	pb "github.com/senexi/go-proto-micro/generated/api"
 	_ "github.com/senexi/go-proto-micro/generated/statik"
 	"github.com/senexi/go-proto-micro/internal/providers/db"
 	s "github.com/senexi/go-proto-micro/internal/providers/management"

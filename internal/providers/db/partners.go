@@ -1,7 +1,7 @@
 package db
 
 import(
-    "github.com/senexi/go-proto-micro/generated/partners"
+    "github.com/senexi/go-proto-micro/generated/api"
     log "github.com/sirupsen/logrus"
 )
 

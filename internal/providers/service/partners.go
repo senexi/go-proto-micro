@@ -4,7 +4,7 @@ import (
     "context"
     "github.com/senexi/go-proto-micro/internal/usecases"
     "github.com/senexi/go-proto-micro/internal/providers/db"
-	pb "github.com/senexi/go-proto-micro/generated/partners"
+	pb "github.com/senexi/go-proto-micro/generated/api"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 )

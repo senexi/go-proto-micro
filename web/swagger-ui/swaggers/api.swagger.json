@@ -1,8 +1,17 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "partners.proto",
-    "version": "version not set"
+    "title": "My API",
+    "version": "1.0",
+    "contact": {
+      "name": "me",
+      "url": "https://github.com/senexi/go-proto-micro",
+      "email": "none@example.com"
+    },
+    "license": {
+      "name": "Apache 2",
+      "url": "https://github.com/senexi/go-proto-micro/blob/master/LICENSE"
+    }
   },
   "schemes": [
     "http",
@@ -23,6 +32,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/partnersPartnerList"
+            }
+          },
+          "403": {
+            "description": "Returned when the user does not have permission to access the resource.",
+            "schema": {
+              "$ref": "#/definitions/partnersProblem"
             }
           }
         },
@@ -98,6 +113,23 @@
           "items": {
             "$ref": "#/definitions/partnersPartner"
           }
+        }
+      }
+    },
+    "partnersProblem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
         }
       }
     }

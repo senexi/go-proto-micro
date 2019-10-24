@@ -1,4 +1,3 @@
-//go:generate protoc -I . -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/protobuf partners.proto --gogoslick_out=plugins=grpc:../partners
 syntax = "proto3";
 
 package partners;
@@ -9,6 +8,41 @@ option java_multiple_files = true;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/api/annotations.proto";
+import "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+	info: {
+		title: "My API";
+		version: "1.0";
+		contact: {
+			name: "me";
+			url: "https://github.com/senexi/go-proto-micro";
+			email: "none@example.com";
+		};
+		license: {
+			name: "Apache 2";
+			url: "https://github.com/senexi/go-proto-micro/blob/master/LICENSE";
+		};
+	};
+    responses: {
+		key: "403";
+		value: {
+			description: "Returned when the user does not have permission to access the resource.";
+            schema: {
+				json_schema: {
+					ref: ".partners.Problem";
+				}
+			}
+		}
+    }
+};
+
+message Problem {
+    string type = 1;
+    string title = 2;
+    string status = 3;
+    string detail = 4;
+}
 
 message Partner {
   string name = 1 [(gogoproto.jsontag) = "name", (gogoproto.moretags) = "pg:\",notnull\""];
