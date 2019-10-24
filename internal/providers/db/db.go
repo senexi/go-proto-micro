@@ -8,36 +8,26 @@ import (
 var postgresDB *pg.DB
 var isConnected bool
 
-type DB struct {
-    db *pg.DB
-}
-
 func Connect(database string, user string, password string, url string) {
-    log.WithFields(log.Fields{"db": database, "user": user, "url": url}).Info("connecting to database")
+	log.WithFields(log.Fields{"db": database, "user": user, "url": url}).Info("connecting to database")
 	postgresDB = pg.Connect(&pg.Options{
 		User:     user,
 		Password: password,
 		Database: database,
 		Addr:     url,
-    })
+	})
 	Health()
 
 	log.WithFields(log.Fields{"db": database}).Info("connected to database")
 }
 
-func NewDatabase() *DB{
-    return &DB{
-        db: postgresDB,
-    }
-}
-
 func Health() bool {
 	_, err := postgresDB.Exec("SELECT 1")
 	if err != nil {
-        log.WithFields(log.Fields{"error": err}).Error("database down")
-        isConnected = false
+		log.WithFields(log.Fields{"error": err}).Error("database down")
+		isConnected = false
 		return false
-    }
-    isConnected = true
+	}
+	isConnected = true
 	return isConnected
 }
