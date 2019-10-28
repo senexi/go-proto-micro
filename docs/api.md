@@ -8,7 +8,6 @@
     - [Partner](#proto.Partner)
     - [Partner.PhoneNumber](#proto.Partner.PhoneNumber)
     - [PartnerList](#proto.PartnerList)
-    - [Problem](#proto.Problem)
     - [SearchRequest](#proto.SearchRequest)
   
     - [Partner.PhoneType](#proto.Partner.PhoneType)
@@ -54,6 +53,7 @@
 | name | [string](#string) |  |  |
 | id | [int32](#int32) |  |  |
 | email | [string](#string) |  |  |
+| sss | [google.rpc.Status](#google.rpc.Status) |  |  |
 | phone | [Partner.PhoneNumber](#proto.Partner.PhoneNumber) | repeated |  |
 
 
@@ -86,23 +86,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | partners | [Partner](#proto.Partner) | repeated |  |
-
-
-
-
-
-
-<a name="proto.Problem"></a>
-
-### Problem
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| code | [string](#string) |  |  |
-| message | [string](#string) |  |  |
-| details | [string](#string) |  |  |
 
 
 

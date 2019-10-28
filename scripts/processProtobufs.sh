@@ -16,6 +16,7 @@ for i in *.proto; do
     mkdir -p ../generated/$basename/clients/python
     OUT=../generated/$basename
     protoc -I . -I=${GOPATH}/src -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf \
+        -I=${GOPATH}/src/github.com/gogo/googleapis/ \
         -I=${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
         -I=$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/ \
         $i \

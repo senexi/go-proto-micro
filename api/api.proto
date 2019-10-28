@@ -7,8 +7,9 @@ option java_outer_classname = "PartnerProtos";
 option java_multiple_files = true;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-import "google/api/annotations.proto";
+import "github.com/gogo/googleapis/google/api/annotations.proto";
 import "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger/options/annotations.proto";
+import "github.com/gogo/googleapis/google/rpc/status.proto";
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 	info: {
@@ -30,10 +31,10 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 			description: "Returned when the user does not have permission to access the resource.";
             schema: {
 				json_schema: {
-					ref: "google.api.status";
+					ref: ".google.rpc.Status";
 				}
 			}
-		}
+        }
     }
 };
 
@@ -41,6 +42,7 @@ message Partner {
   string name = 1 [(gogoproto.jsontag) = "name", (gogoproto.moretags) = "pg:\",notnull\""];
   int32 id = 2;
   string email = 3;
+  google.rpc.Status sss = 5;
 
   enum PhoneType {
     MOBILE = 0;
