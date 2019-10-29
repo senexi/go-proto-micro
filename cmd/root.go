@@ -12,6 +12,7 @@ import (
 
 var cfgFile string
 var logLevel string
+var jsonLogging bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -45,12 +46,16 @@ func init() {
 	// will be global for your application.
 
     rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./config.yaml)")
-    rootCmd.PersistentFlags().StringVarP(&logLevel, "verbosity", "v", log.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic")
+    rootCmd.PersistentFlags().StringVarP(&logLevel, "verbosity", "v", log.InfoLevel.String(), "Log level (debug, info, warn, error, fatal, panic")
+    viper.BindPFlag("logging.verbosity", rootCmd.PersistentFlags().Lookup("verbosity"))
+    rootCmd.PersistentFlags().BoolVarP(&jsonLogging, "json-logging", "j", false, "enable logging in json format")
+    viper.BindPFlag("logging.json-logging", rootCmd.PersistentFlags().Lookup("json-logging"))
 
     rootCmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
-		if err := setLogLevel(logLevel); err != nil {
+        setLogFormat()
+		if err := setLogLevel(); err != nil {
 			return err
-		}
+        }
 		return nil
     }
 
@@ -87,11 +92,19 @@ func initConfig() {
 }
 
 //setUpLogs set the log output ans the log level
-func setLogLevel(level string) error {
+func setLogLevel() error {
+    level := viper.GetString("logging.verbosity")
 	lvl, err := log.ParseLevel(level)
 	if err != nil {
 		return err
 	}
-	log.SetLevel(lvl)
+    log.SetLevel(lvl)
+    log.WithFields(log.Fields{"loglevel": logLevel}).Info("set loglevel")
 	return nil
+}
+
+func setLogFormat() {
+    if(viper.GetBool("logging.json-logging")) {
+        log.SetFormatter(&log.JSONFormatter{})
+    }
 }

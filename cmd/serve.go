@@ -43,8 +43,6 @@ var server s.Server
 var mock bool
 
 func init() {
-	// serveCmd.Flags().StringVarP(&port, "port", "p", "50051", "port of the server")
-    // viper.BindPFlag("server.port", serveCmd.LocalFlags().Lookup("port"))
     serveCmd.Flags().BoolVarP(&mock, "mock", "m", false, "run server in mock mode")
 	rootCmd.AddCommand(serveCmd)
 }
