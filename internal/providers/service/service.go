@@ -3,7 +3,6 @@ package service
 import (
 	"context"
 	"github.com/senexi/go-proto-micro/generated/api"
-	"github.com/senexi/go-proto-micro/internal/providers/db"
 	"github.com/senexi/go-proto-micro/internal/usecases"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -16,7 +15,6 @@ type PartnerService struct {
 
 func NewPartnerService() *PartnerService {
 	partnerUsecase := &usecases.PartnerUsecase{
-		DB: db.NewDatabase(),
 	}
 
 	partnerService := &PartnerService{

@@ -12,7 +12,6 @@ import (
 	"github.com/rakyll/statik/fs"
 	pb "github.com/senexi/go-proto-micro/generated/api"
 	_ "github.com/senexi/go-proto-micro/generated/statik"
-	"github.com/senexi/go-proto-micro/internal/providers/db"
 	s "github.com/senexi/go-proto-micro/internal/providers/management"
 	ps "github.com/senexi/go-proto-micro/internal/providers/service"
 	"github.com/spf13/cobra"
@@ -49,14 +48,6 @@ func init() {
 
 func runServer() {
 	port := viper.GetString("server.port")
-	database := viper.GetString("database.name")
-	databasePort := viper.GetString("database.port")
-	user := viper.GetString("database.user")
-	password := viper.GetString("database.password")
-	databaseURL := viper.GetString("database.url")
-
-	db.Connect(database, user, password, fmt.Sprintf("%s:%s", databaseURL, databasePort))
-
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	log.WithFields(log.Fields{"port": port}).Info("started grpc server")
 	if err != nil {
