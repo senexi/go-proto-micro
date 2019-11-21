@@ -3,10 +3,7 @@ kind: Workflow
 metadata:
   generateName: go-proto-micro-
 spec:
-  # entrypoint is the name of the template used as the starting point of the workflow
   entrypoint: go-proto-micro
-  # the 'ci-example' template accepts an parameter 'revision', with a default of 'master'.
-  # this can be overridden via argo CLI (e.g. `argo submit ci.yaml -p revision=0dea2d0`)
   arguments:
     parameters:
     - name: revision
@@ -19,13 +16,39 @@ spec:
       parameters:
       - name: revision
     steps:
+    - - name: code-generation
+        template: code-generation
+        arguments:
+          parameters:
+          - name: revision
+            value: "{{inputs.parameters.revision}}"
     - - name: build
         template: build-golang
         arguments:
           parameters:
           - name: revision
             value: "{{inputs.parameters.revision}}"
-
+  - name: code-generation
+    inputs:
+      parameters:
+      - name: revision
+      artifacts:
+      - name: code
+        path: /src
+        git:
+          repo: git@github.com:senexi/go-proto-micro-generated.git
+          revision: "{{inputs.parameters.revision}}"
+          sshPrivateKeySecret:
+            name: git-key
+            key: id_rsa
+    container:
+      image: senexi/protobuf-builder:latest
+      env:
+        - name: GIT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: git-key
+              key: id_rsa
   - name: build-golang
     inputs:
       parameters:
@@ -40,18 +63,17 @@ spec:
       image: senexi/gobuilder:latest
       command: [sh, -c]
       args: ["
-        cd /go/src/github.com/senexi/go-proto-micro &&
-        git status &&
-        chmod +x scripts/* &&
-        make generate &&
-        go get &&
-        make build &&
-        mv bin/go-proto-micro /tmp &&
+        cd /go/src/github.com/senexi/go-proto-micro && \
+        git status && \
+        chmod +x scripts/* && \
+        make generate && \
+        go get && \
+        make build && \
         docker build -t senexi/go-proto-micro:latest .
         "]
       volumeMounts:
-        - name: tmp
-          mountPath: /tmp
+       # - name: tmp
+       #   mountPath: /tmp
         - name: dockersock
           mountPath: "/var/run/docker.sock"
     volumes:
@@ -61,7 +83,7 @@ spec:
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
-    outputs:
-      artifacts:
-      - name: binary
-        path: /tmp/go-proto-micro
+    # outputs:
+    #  artifacts:
+    #  - name: binary
+    #    path: /tmp/go-proto-micro
