@@ -17,7 +17,6 @@ install-requirements:
 	scripts/installRequirements.sh
 
 generate:
-	scripts/processProtobufs.sh
 	statik -f -src=./web -dest=./generated
 
 format:

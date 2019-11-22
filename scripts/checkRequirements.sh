@@ -18,13 +18,6 @@ e "checking for required commands"
 REQ=(
     go
     make
-    protoc
-    protoc-gen-gogoslick
-    protoc-gen-go
-    protoc-gen-gofast
-    protoc-gen-doc
-    protoc-gen-grpc-gateway
-    protoc-gen-swagger
     statik)
 
 for i in ${REQ[@]}; do
