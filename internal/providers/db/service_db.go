@@ -2,7 +2,7 @@ package db
 
 import (
 	"github.com/go-pg/pg"
-	"github.com/senexi/go-proto-micro/generated/api"
+	"github.com/senexi/go-proto-micro-generated/generated/api/language/go"
 	log "github.com/sirupsen/logrus"
 )
 

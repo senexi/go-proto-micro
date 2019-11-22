@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/senexi/go-proto-micro/generated/api"
+	"github.com/senexi/go-proto-micro-generated/generated/api/language/go"
 )
 
 type MockDB struct {

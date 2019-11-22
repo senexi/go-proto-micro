@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	"github.com/senexi/go-proto-micro/generated/api"
+	"github.com/senexi/go-proto-micro-generated/generated/api/language/go"
 	"github.com/senexi/go-proto-micro/internal/providers/db"
 	"github.com/senexi/go-proto-micro/internal/usecases"
 	codes "google.golang.org/grpc/codes"

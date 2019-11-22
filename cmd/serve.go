@@ -10,7 +10,7 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/rakyll/statik/fs"
-	pb "github.com/senexi/go-proto-micro/generated/api"
+	pb "github.com/senexi/go-proto-micro-generated/generated/api/language/go"
 	_ "github.com/senexi/go-proto-micro/generated/statik"
 	"github.com/senexi/go-proto-micro/internal/providers/db"
 	s "github.com/senexi/go-proto-micro/internal/providers/management"
@@ -30,12 +30,12 @@ var serveCmd = &cobra.Command{
 	Long:  `Run the server`,
 	Run: func(cmd *cobra.Command, args []string) {
 		go runHTTPServer()
-        go runGrpcGateway()
-        if (mock) {
-            runMockServer()
-        } else {
-            runServer()
-        }
+		go runGrpcGateway()
+		if mock {
+			runMockServer()
+		} else {
+			runServer()
+		}
 	},
 }
 
@@ -43,7 +43,7 @@ var server s.Server
 var mock bool
 
 func init() {
-    serveCmd.Flags().BoolVarP(&mock, "mock", "m", false, "run server in mock mode")
+	serveCmd.Flags().BoolVarP(&mock, "mock", "m", false, "run server in mock mode")
 	rootCmd.AddCommand(serveCmd)
 }
 
@@ -71,7 +71,7 @@ func runServer() {
 }
 
 func runMockServer() {
-    port := viper.GetString("server.port")
+	port := viper.GetString("server.port")
 
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	log.WithFields(log.Fields{"port": port}).Info("started MOCKED grpc server")
